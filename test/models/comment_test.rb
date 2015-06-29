@@ -9,12 +9,12 @@ class CommentTest < ActiveSupport::TestCase
     assert @comment.valid?
   end
 
-  test "should not be valid" do
+  test "should not be valid without author" do
     @comment.author = ""
     assert_not @comment.valid?
   end
 
-  test "should not be valid" do
+  test "should not be valid without text" do
   end
 
 end
