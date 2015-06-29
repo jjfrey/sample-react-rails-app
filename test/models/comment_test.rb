@@ -30,12 +30,12 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test "recent_with_replies should pull the most recent as json" do
-    reply = Comment.create(author: 'some dood', text: 'The dude abides', parent_id: @comment.id)
+    reply = Comment.create(author: 'some dood', text: 'The dude abides', parent_id: comments(:two).id)
 
     json = Comment.recent_with_replies(1)
-    json_reply = json[:replies][0]
+    json_reply = json[0]['replies'][0]
 
-    assert_equal(reply.author, json_reply[:author])
+    assert_equal(reply.author, json_reply['author'])
 
   end
 
