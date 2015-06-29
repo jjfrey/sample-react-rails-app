@@ -15,6 +15,8 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test "should not be valid without text" do
+    @comment.text = ""
+    assert_not @comment.valid?
   end
 
 end
