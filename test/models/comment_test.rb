@@ -29,4 +29,15 @@ class CommentTest < ActiveSupport::TestCase
     assert_equal(1, comment.replies.count)
   end
 
+  test "recent_with_replies should pull the most recent as json" do
+    reply = Comment.create(author: 'some dood', text: 'The dude abides', parent_id: @comment.id)
+
+    json = Comment.recent_with_replies(1)
+    json_reply = json[:replies][0]
+
+    assert_equal(reply.author, json_reply[:author])
+
+  end
+
+
 end
