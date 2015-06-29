@@ -13,8 +13,10 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "should post create" do
-    post :create, (@comment) 
-    assert_not_nil Comment.where(:author => @comment.author)
+    assert_difference('Comment.count') do
+      post :create, comment: {author: @comment.author, text: @comment.text}
+    end
+
   end
 
 end
