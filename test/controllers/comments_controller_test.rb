@@ -17,6 +17,8 @@ class CommentsControllerTest < ActionController::TestCase
       post :create, comment: {author: @comment.author, text: @comment.text}
     end
 
+    assert_redirected_to comments_path
+
   end
 
 end
