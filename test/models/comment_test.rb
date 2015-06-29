@@ -19,4 +19,14 @@ class CommentTest < ActiveSupport::TestCase
     assert_not @comment.valid?
   end
 
+  test "should allow replies" do
+    comment = Comment.create(author: @comment.author, text: @comment.text)
+    assert_not_nil comment
+
+    reply = comments(:two)
+    Comment.create(author: reply.author, text: reply.text, parent_id: comment.id)
+  
+    assert_equal(1, comment.replies.count)
+  end
+
 end
