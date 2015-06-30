@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
   validates :text, presence: true 
 
   def self.recent_with_replies (limit)
-    where(parent_id: nil).order('created_at').limit(limit).as_json(only: [:text, :author], include: :replies)
+    where(parent_id: nil).order('created_at').limit(limit).as_json(only: [:id, :text, :author], include: :replies)
   end
 
 end

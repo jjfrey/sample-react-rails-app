@@ -2,7 +2,11 @@ var CommentBox = React.createClass({
   getInitialState: function () {
     return JSON.parse(this.props.presenter);
   },
-
+  handleReplyClick: function(parentId){
+    element = document.getElementById('parent_id');
+    element.value = parentId;
+    this.setState({toggle: !this.state.toggle});
+  },
   handleCommentSubmit: function ( formData, action ) {
     $.ajax({
       data: formData,
@@ -19,10 +23,10 @@ var CommentBox = React.createClass({
     return (
       <div className="comment-box">
         <img src={ this.props.imgSrc } alt={ this.props.imgAlt } />
-        <CommentList comments={ this.state.comments } />
+        <CommentList onReplyClick={this.handleReplyClick} comments={ this.state.comments }  />
         <hr />
         <h2>Add a comment:</h2>
-        <CommentForm form={ this.state.form } onCommentSubmit={ this.handleCommentSubmit } />
+        <CommentForm form={ this.state.form }  onCommentSubmit={ this.handleCommentSubmit } />
       </div>
     );
   }
