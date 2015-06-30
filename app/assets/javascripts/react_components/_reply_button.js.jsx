@@ -1,7 +1,8 @@
 var ReplyButton = React.createClass({
   handleClick: function(event){
-    debugger;
     this.props.onReplyClick(this.props.parentId);
+    element = document.getElementById('parent_id');
+    element.value = this.props.parentId;
   },
   render: function () {
     return (

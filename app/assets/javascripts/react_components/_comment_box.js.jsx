@@ -3,9 +3,8 @@ var CommentBox = React.createClass({
     return JSON.parse(this.props.presenter);
   },
   handleReplyClick: function(parentId){
-    element = document.getElementById('parent_id');
-    element.value = parentId;
-    this.setState({toggle: !this.state.toggle});
+    this.setState({toggle: !this.state.toggle})
+
   },
   handleCommentSubmit: function ( formData, action ) {
     $.ajax({
