@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def index
     @presenter = {
-      :comments => Comment.last(5),
+      :comments => Comment.recent_with_replies(5),
       :form => {
         :action => comments_path,
         :csrf_param => request_forgery_protection_token,
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     @comment.save
 
     if request.xhr?
-      render :json => Comment.last(5)
+      render :json => Comment.recent_with_replies(5)
     else
       redirect_to comments_path
     end
