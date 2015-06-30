@@ -17,6 +17,7 @@ var CommentForm = React.createClass({
     // reset form
     this.refs.author.getDOMNode().value = "";
     this.refs.text.getDOMNode().value = "";
+    document.getElementById('parent_id').value = "";
   },
   render: function () {
     return (
